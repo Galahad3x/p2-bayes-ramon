@@ -32,22 +32,22 @@ testName = sys.argv[3]
 with open(filename, "r") as f:
     with open(trainName, "w") as train:
         with open(testName, "w") as test:
-            train.write("% Train database")
-            train.write("@RELATION Train")
-            test.write("% Test database")
-            test.write("@RELATION Test")
+            train.write("% Train database\n")
+            train.write("@RELATION Train\n")
+            test.write("% Test database\n")
+            test.write("@RELATION Test\n")
             for file in [train, test]:
-                file.write("")
-                file.write("@ATTRIBUTE ri NUMERIC")
-                file.write("@ATTRIBUTE na NUMERIC")
-                file.write("@ATTRIBUTE mg NUMERIC")
-                file.write("@ATTRIBUTE al NUMERIC")
-                file.write("@ATTRIBUTE si NUMERIC")
-                file.write("@ATTRIBUTE k NUMERIC")
-                file.write("@ATTRIBUTE ca NUMERIC")
-                file.write("@ATTRIBUTE ba NUMERIC")
-                file.write("@ATTRIBUTE fe NUMERIC")
-                file.write("@ATTRIBUTE type NUMERIC")
+                file.write("\n")
+                file.write("@ATTRIBUTE ri NUMERIC\n")
+                file.write("@ATTRIBUTE na NUMERIC\n")
+                file.write("@ATTRIBUTE mg NUMERIC\n")
+                file.write("@ATTRIBUTE al NUMERIC\n")
+                file.write("@ATTRIBUTE si NUMERIC\n")
+                file.write("@ATTRIBUTE k NUMERIC\n")
+                file.write("@ATTRIBUTE ca NUMERIC\n")
+                file.write("@ATTRIBUTE ba NUMERIC\n")
+                file.write("@ATTRIBUTE fe NUMERIC\n")
+                file.write("@ATTRIBUTE type NUMERIC\n")
             CSV_DICT_READER = csv.DictReader(f)
             for row in CSV_DICT_READER:
                 line = ""
@@ -71,6 +71,6 @@ with open(filename, "r") as f:
                 line += ","
                 line += str(row["Type"])
                 if random.choice([True, True, True, False]):
-                    train.write(line)
+                    train.write(line + "\n")
                 else:
-                    test.write(line)
+                    test.write(line + "\n")
