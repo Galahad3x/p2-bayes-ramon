@@ -48,6 +48,7 @@ with open(filename, "r") as f:
                 file.write("@ATTRIBUTE ba NUMERIC\n")
                 file.write("@ATTRIBUTE fe NUMERIC\n")
                 file.write("@ATTRIBUTE type NUMERIC\n")
+                file.write("@DATA\n")
             CSV_DICT_READER = csv.DictReader(f)
             for row in CSV_DICT_READER:
                 line = ""
