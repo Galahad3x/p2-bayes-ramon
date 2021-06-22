@@ -40,7 +40,9 @@ with open(filename, "r") as f:
     with open(trainName, "w") as train:
         with open(testName, "w") as test:
             CSV_DICT_READER = csv.DictReader(f)
+            rows = []
             for row in CSV_DICT_READER:
+                rows.append(row)
                 line = ""
                 line += maptoval(row["RI"], ril)
                 line += ","
@@ -60,7 +62,6 @@ with open(filename, "r") as f:
                 line += ","
                 line += maptoval(row["Fe"], fel)
                 line += ","
-                line += str(row["Type"])
                 if random.choice([True, True, True, False]):
                     pass
                 else:
@@ -82,8 +83,7 @@ with open(filename, "r") as f:
                 file.write("@ATTRIBUTE fe {" + numbers(fel) + "}\n")
                 file.write("@ATTRIBUTE type {" + numbers([1,2,3,4,5,6,7]) + "}\n")
                 file.write("@DATA\n")
-            CSV_DICT_READER = csv.DictReader(f)
-            for row in CSV_DICT_READER:
+            for row in rows:
                 line = ""
                 line += maptoval(row["RI"], ril)
                 line += ","
@@ -103,7 +103,7 @@ with open(filename, "r") as f:
                 line += ","
                 line += maptoval(row["Fe"], fel)
                 line += ","
-                line += str(row["Type"])
+                line += str(int(row["Type"]) - 1)
                 if random.choice([True, True, True, False]):
                     train.write(line + "\n")
                 else:
